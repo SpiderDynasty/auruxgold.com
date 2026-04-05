@@ -1,229 +1,261 @@
 <!DOCTYPE html>
-<html lang="sk">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AuruxGold</title>
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-      line-height: 1.6;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #0b0b0b;
+      color: white;
+    }
+
     .container {
       width: 90%;
       max-width: 1200px;
-      margin: 0 auto;
+      margin: auto;
     }
+
     header {
-      background: #111827;
       padding: 20px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: #0b0b0b;
     }
+
     header .container {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
+
     .logo {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: bold;
-      color: #fbbf24;
+      color: #D4AF37;
     }
+
     nav a {
-      color: #cbd5e1;
-      text-decoration: none;
+      color: #aaa;
       margin-left: 20px;
+      text-decoration: none;
+      transition: 0.3s;
     }
+
+    nav a:hover {
+      color: #D4AF37;
+    }
+
     .hero {
-      padding: 80px 0;
       text-align: center;
-      background: linear-gradient(135deg, #111827, #1e293b);
+      padding: 100px 0;
+      background: radial-gradient(circle at top, #111, #000);
     }
+
     .hero h1 {
-      font-size: 48px;
+      font-size: 52px;
       margin-bottom: 20px;
     }
+
     .hero p {
-      font-size: 20px;
-      color: #cbd5e1;
-      max-width: 700px;
-      margin: 0 auto 30px;
+      color: #aaa;
+      font-size: 18px;
+      max-width: 600px;
+      margin: auto;
     }
+
     .btn {
       display: inline-block;
-      background: #fbbf24;
-      color: #111827;
-      padding: 14px 24px;
-      border-radius: 10px;
-      text-decoration: none;
+      margin: 15px;
+      padding: 14px 26px;
+      background: #D4AF37;
+      color: black;
       font-weight: bold;
-      margin: 8px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
     }
+
+    .btn:hover {
+      opacity: 0.8;
+    }
+
     .section {
-      padding: 60px 0;
+      padding: 80px 0;
     }
-    .section h2 {
-      font-size: 32px;
-      margin-bottom: 30px;
+
+    h2 {
       text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
     }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
+      gap: 25px;
     }
+
     .card {
-      background: #1e293b;
-      border-radius: 18px;
+      background: #111;
+      border-radius: 14px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: 0.3s;
     }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: #D4AF37;
+    }
+
     .card img {
       width: 100%;
       height: 220px;
       object-fit: cover;
     }
+
     .card-content {
-      padding: 18px;
+      padding: 16px;
     }
+
     .card h3 {
       margin-bottom: 10px;
-      font-size: 22px;
     }
+
     .price {
-      color: #fbbf24;
+      color: #D4AF37;
       font-weight: bold;
-      font-size: 20px;
-      margin-bottom: 10px;
     }
+
     .muted {
-      color: #94a3b8;
+      color: #777;
       font-size: 14px;
     }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-    .step {
-      background: #1e293b;
-      padding: 24px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
+
     footer {
-      padding: 30px 0;
+      padding: 40px 0;
       text-align: center;
-      color: #94a3b8;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      margin-top: 40px;
+      color: #666;
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
+
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="container">
-      <div class="logo">AuruxGold</div>
-      <nav>
-        <a href="#aukcie">Aukcie</a>
-        <a href="#funguje">Ako to funguje</a>
-        <a href="#predaj">Predaj</a>
-      </nav>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="container">
-      <h1>Draž luxusné veci jednoducho a rýchlo</h1>
-      <p>
-        Moderná aukčná platforma pre hodinky, elektroniku, zberateľské kúsky,
-        dizajn a ďalšie hodnotné predmety.
-      </p>
-      <a class="btn" href="#aukcie">Prezrieť aukcie</a>
-      <a class="btn" href="#predaj">Pridať položku</a>
-    </div>
-  </section>
+<header>
+  <div class="container">
+    <div class="logo">AuruxGold</div>
+    <nav>
+      <a href="#auctions">Auctions</a>
+      <a href="#how">How it works</a>
+      <a href="#sell">Sell</a>
+    </nav>
+  </div>
+</header>
 
-  <section class="section" id="aukcie">
-    <div class="container">
-      <h2>Aktívne aukcie</h2>
-      <div class="grid">
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1200&q=80" alt="Vintage hodinky">
-          <div class="card-content">
-            <h3>Vintage hodinky</h3>
-            <div class="price">Aktuálna cena: €320</div>
-            <div class="muted">18 prihodení • končí o 2h 14m</div>
-          </div>
-        </div>
+<section class="hero">
+  <div class="container">
+    <h1>Discover Exclusive Luxury Auctions</h1>
+    <p>
+      Bid on premium items, collectibles, and high-end products in a refined auction experience.
+    </p>
+    <a class="btn" href="#auctions">Explore Auctions</a>
+    <a class="btn" href="#sell">Sell Item</a>
+  </div>
+</section>
 
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80" alt="Retro fotoaparát">
-          <div class="card-content">
-            <h3>Retro fotoaparát</h3>
-            <div class="price">Aktuálna cena: €145</div>
-            <div class="muted">11 prihodení • končí o 5h 49m</div>
-          </div>
-        </div>
+<section class="section" id="auctions">
+  <div class="container">
+    <h2>Live Auctions</h2>
 
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=1200&q=80" alt="Gitara">
-          <div class="card-content">
-            <h3>Zberateľská gitara</h3>
-            <div class="price">Aktuálna cena: €870</div>
-            <div class="muted">27 prihodení • končí o 1d 3h</div>
-          </div>
-        </div>
+    <div class="grid">
 
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80" alt="Stolička">
-          <div class="card-content">
-            <h3>Dizajnová stolička</h3>
-            <div class="price">Aktuálna cena: €210</div>
-            <div class="muted">9 prihodení • končí o 8h 22m</div>
-          </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49">
+        <div class="card-content">
+          <h3>Luxury Watch</h3>
+          <div class="price">$320</div>
+          <div class="muted">18 bids • 2h left</div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="section" id="funguje">
-    <div class="container">
-      <h2>Ako to funguje</h2>
-      <div class="steps">
-        <div class="step">
-          <h3>1. Vyber si položku</h3>
-          <p>Prezri aukcie a nájdi produkt, o ktorý chceš súťažiť.</p>
-        </div>
-        <div class="step">
-          <h3>2. Prihoď</h3>
-          <p>Zadaj svoju cenu a sleduj vývoj dražby v reálnom čase.</p>
-        </div>
-        <div class="step">
-          <h3>3. Vyhraj aukciu</h3>
-          <p>Po skončení dražby dokončíš platbu a predaj je uzavretý.</p>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32">
+        <div class="card-content">
+          <h3>Vintage Camera</h3>
+          <div class="price">$145</div>
+          <div class="muted">11 bids • 5h left</div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="section" id="predaj">
-    <div class="container">
-      <h2>Predaj svoje veci</h2>
-      <p style="text-align:center; max-width:700px; margin:0 auto; color:#cbd5e1;">
-        Nahraj fotografie, nastav počiatočnú cenu a nechaj kupujúcich súťažiť
-        o tvoju položku.
-      </p>
-    </div>
-  </section>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1">
+        <div class="card-content">
+          <h3>Collector Guitar</h3>
+          <div class="price">$870</div>
+          <div class="muted">27 bids • 1 day left</div>
+        </div>
+      </div>
 
-  <footer>
-    <div class="container">
-      © 2026 AuruxGold. Všetky práva vyhradené.
     </div>
-  </footer>
+  </div>
+</section>
+
+<section class="section" id="how">
+  <div class="container">
+    <h2>How It Works</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-content">
+          <h3>1. Browse Auctions</h3>
+          <p class="muted">Explore exclusive items listed by sellers.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-content">
+          <h3>2. Place a Bid</h3>
+          <p class="muted">Compete with others in real time.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-content">
+          <h3>3. Win & Pay</h3>
+          <p class="muted">Complete the purchase securely.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="sell">
+  <div class="container">
+    <h2>Sell Your Items</h2>
+    <p style="text-align:center; color:#aaa;">
+      List your luxury items and reach premium buyers worldwide.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © 2026 AuruxGold. All rights reserved.
+  </div>
+</footer>
+
 </body>
 </html>
