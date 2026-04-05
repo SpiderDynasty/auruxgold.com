@@ -3,259 +3,1024 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AuruxGold</title>
+  <title>AuruxGold | Luxury Auctions</title>
+  <meta
+    name="description"
+    content="Discover curated luxury auctions for watches, collectibles, designer objects, and exceptional pieces."
+  />
 
   <style>
+    :root {
+      --bg: #060606;
+      --bg-soft: #0d0d0f;
+      --panel: rgba(255, 255, 255, 0.04);
+      --panel-strong: rgba(255, 255, 255, 0.07);
+      --text: #f5f1e8;
+      --muted: #b5ada1;
+      --line: rgba(255, 255, 255, 0.08);
+      --gold: #d4af37;
+      --gold-soft: rgba(212, 175, 55, 0.18);
+      --gold-strong: rgba(212, 175, 55, 0.28);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max: 1240px;
+    }
+
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: "Segoe UI", sans-serif;
-      background: #0b0b0b;
-      color: white;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(212, 175, 55, 0.08), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(212, 175, 55, 0.06), transparent 22%),
+        linear-gradient(180deg, #090909 0%, #050505 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
     }
 
     .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border: 1px solid var(--gold-soft);
+      background: rgba(212, 175, 55, 0.06);
+      color: #ead79a;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 16px rgba(212, 175, 55, 0.65);
     }
 
     header {
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      background: #0b0b0b;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(6, 6, 6, 0.72);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    header .container {
+    .header-wrap {
+      min-height: 82px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
 
-    .logo {
-      font-size: 26px;
-      font-weight: bold;
-      color: #D4AF37;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, #e3c35c, #9d7712);
+      color: #111;
+      font-weight: 800;
+      box-shadow: 0 10px 26px rgba(212, 175, 55, 0.25);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-text strong {
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      color: #f8f4ea;
+    }
+
+    .brand-text span {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
     }
 
     nav a {
-      color: #aaa;
-      margin-left: 20px;
-      text-decoration: none;
-      transition: 0.3s;
+      color: #c8c0b4;
+      font-size: 14px;
+      transition: 0.25s ease;
     }
 
     nav a:hover {
-      color: #D4AF37;
+      color: var(--gold);
     }
 
-    .hero {
-      text-align: center;
-      padding: 100px 0;
-      background: radial-gradient(circle at top, #111, #000);
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .hero h1 {
-      font-size: 52px;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      color: #aaa;
-      font-size: 18px;
-      max-width: 600px;
-      margin: auto;
+    .btn,
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
     }
 
     .btn {
-      display: inline-block;
-      margin: 15px;
-      padding: 14px 26px;
-      background: #D4AF37;
-      color: black;
-      font-weight: bold;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: 0.3s;
+      background: linear-gradient(135deg, #e1c25c, #b88b18);
+      color: #141414;
+      box-shadow: 0 14px 34px rgba(212, 175, 55, 0.2);
     }
 
     .btn:hover {
-      opacity: 0.8;
+      transform: translateY(-2px);
+      filter: brightness(1.03);
+    }
+
+    .btn-ghost {
+      color: #e8e0d2;
+      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(212, 175, 55, 0.34);
+      color: var(--gold);
+      background: rgba(212, 175, 55, 0.05);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 92px 0 54px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    .hero-copy h1 {
+      margin-top: 20px;
+      font-size: clamp(46px, 6vw, 76px);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      max-width: 760px;
+    }
+
+    .hero-copy p {
+      margin-top: 22px;
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .hero-metrics {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      max-width: 760px;
+    }
+
+    .metric {
+      padding: 20px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 28px;
+      color: #fff8ea;
+      letter-spacing: -0.03em;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 640px;
+    }
+
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(28px);
+      pointer-events: none;
+    }
+
+    .glow-a {
+      width: 240px;
+      height: 240px;
+      right: 0;
+      top: 0;
+      background: rgba(212, 175, 55, 0.12);
+    }
+
+    .glow-b {
+      width: 180px;
+      height: 180px;
+      left: 14%;
+      bottom: 7%;
+      background: rgba(212, 175, 55, 0.08);
+    }
+
+    .hero-card {
+      position: absolute;
+      inset: 40px 0 0 40px;
+      border-radius: 34px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.48);
+      background: #0e0e0e;
+    }
+
+    .hero-card img {
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.72);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.65)),
+        linear-gradient(135deg, rgba(0,0,0,0.12), rgba(0,0,0,0.5));
+    }
+
+    .floating-lot {
+      position: absolute;
+      left: -10px;
+      bottom: 28px;
+      width: min(90%, 370px);
+      padding: 22px;
+      border-radius: 24px;
+      backdrop-filter: blur(16px);
+      background: rgba(9, 9, 9, 0.72);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .floating-lot .label {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: #e6d38f;
+      text-transform: uppercase;
+    }
+
+    .floating-lot h3 {
+      margin-top: 10px;
+      font-size: 26px;
+      letter-spacing: -0.03em;
+    }
+
+    .floating-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .floating-stat {
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .floating-stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .floating-stat strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 18px;
+      color: #fff6dc;
     }
 
     .section {
-      padding: 80px 0;
+      padding: 88px 0;
     }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 32px;
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 34px;
     }
 
-    .grid {
+    .section-header h2 {
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .section-header p {
+      max-width: 580px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .lots-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
     }
 
-    .card {
-      background: #111;
-      border-radius: 14px;
+    .lot-card {
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.05);
-      transition: 0.3s;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+      transition: 0.28s ease;
     }
 
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: #D4AF37;
+    .lot-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(212, 175, 55, 0.38);
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.55);
     }
 
-    .card img {
-      width: 100%;
-      height: 220px;
+    .lot-media {
+      position: relative;
+      height: 320px;
+      overflow: hidden;
+    }
+
+    .lot-media img {
+      height: 100%;
       object-fit: cover;
+      transition: transform 0.5s ease;
+      filter: brightness(0.92);
     }
 
-    .card-content {
-      padding: 16px;
+    .lot-card:hover .lot-media img {
+      transform: scale(1.05);
     }
 
-    .card h3 {
-      margin-bottom: 10px;
+    .tag {
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #f6e7b3;
+      background: rgba(10, 10, 10, 0.58);
+      border: 1px solid rgba(212, 175, 55, 0.22);
+      backdrop-filter: blur(10px);
     }
 
-    .price {
-      color: #D4AF37;
-      font-weight: bold;
+    .countdown {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff4d1;
+      background: rgba(10, 10, 10, 0.58);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
     }
 
-    .muted {
-      color: #777;
+    .lot-content {
+      padding: 22px;
+    }
+
+    .lot-content h3 {
+      font-size: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .lot-content p {
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.75;
       font-size: 14px;
     }
 
-    footer {
-      padding: 40px 0;
-      text-align: center;
-      color: #666;
-      border-top: 1px solid rgba(255,255,255,0.05);
+    .lot-meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 18px;
     }
 
+    .meta-box {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .meta-box span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .meta-box strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 20px;
+      color: #fff7df;
+    }
+
+    .lot-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .lot-actions .btn,
+    .lot-actions .btn-ghost {
+      flex: 1;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .process-card {
+      padding: 28px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .process-number {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #e1c25c, #a47c16);
+      color: #101010;
+      font-weight: 800;
+      box-shadow: 0 12px 24px rgba(212, 175, 55, 0.18);
+    }
+
+    .process-card h3 {
+      margin-top: 18px;
+      font-size: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .process-card p {
+      margin-top: 12px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .consign-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .consign-panel {
+      padding: 34px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(212,175,55,0.14), rgba(212,175,55,0.04));
+      border: 1px solid rgba(212,175,55,0.24);
+      box-shadow: var(--shadow);
+    }
+
+    .consign-panel h2 {
+      font-size: clamp(34px, 4.2vw, 50px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      max-width: 720px;
+    }
+
+    .consign-panel p {
+      margin-top: 16px;
+      max-width: 680px;
+      color: #d8d1c5;
+      line-height: 1.85;
+    }
+
+    .consign-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .trust-panel {
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .trust-panel h3 {
+      font-size: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .trust-list {
+      list-style: none;
+      margin-top: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .trust-list li {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: #ddd4c6;
+    }
+
+    footer {
+      padding: 28px 0 46px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: #958d80;
+    }
+
+    .footer-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-wrap nav {
+      gap: 16px;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .consign-wrap,
+      .lots-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 560px;
+      }
+
+      .hero-card {
+        inset: 20px 0 0 0;
+      }
+
+      .section-header {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .header-wrap {
+        min-height: auto;
+        padding: 18px 0;
+        flex-wrap: wrap;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .header-actions {
+        width: 100%;
+      }
+
+      .header-actions .btn,
+      .header-actions .btn-ghost {
+        flex: 1;
+      }
+
+      .hero {
+        padding-top: 56px;
+      }
+
+      .hero-copy h1 {
+        font-size: 42px;
+      }
+
+      .hero-copy p {
+        font-size: 16px;
+      }
+
+      .hero-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-lot {
+        left: 10px;
+        right: 10px;
+        width: auto;
+      }
+
+      .floating-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lot-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .lot-actions {
+        flex-direction: column;
+      }
+
+      .footer-wrap {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
   </style>
 </head>
-
 <body>
-
-<header>
-  <div class="container">
-    <div class="logo">AuruxGold</div>
-    <nav>
-      <a href="#auctions">Auctions</a>
-      <a href="#how">How it works</a>
-      <a href="#sell">Sell</a>
-    </nav>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="container">
-    <h1>Discover Exclusive Luxury Auctions</h1>
-    <p>
-      Bid on premium items, collectibles, and high-end products in a refined auction experience.
-    </p>
-    <a class="btn" href="#auctions">Explore Auctions</a>
-    <a class="btn" href="#sell">Sell Item</a>
-  </div>
-</section>
-
-<section class="section" id="auctions">
-  <div class="container">
-    <h2>Live Auctions</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49">
-        <div class="card-content">
-          <h3>Luxury Watch</h3>
-          <div class="price">$320</div>
-          <div class="muted">18 bids • 2h left</div>
+  <header>
+    <div class="container header-wrap">
+      <a href="#" class="brand">
+        <div class="brand-mark">A</div>
+        <div class="brand-text">
+          <strong>AuruxGold</strong>
+          <span>Luxury Auction House</span>
         </div>
-      </div>
+      </a>
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32">
-        <div class="card-content">
-          <h3>Vintage Camera</h3>
-          <div class="price">$145</div>
-          <div class="muted">11 bids • 5h left</div>
-        </div>
-      </div>
+      <nav>
+        <a href="#auctions">Featured Lots</a>
+        <a href="#process">The Process</a>
+        <a href="#consign">Consign</a>
+      </nav>
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1">
-        <div class="card-content">
-          <h3>Collector Guitar</h3>
-          <div class="price">$870</div>
-          <div class="muted">27 bids • 1 day left</div>
-        </div>
+      <div class="header-actions">
+        <a href="#process" class="btn-ghost">How it works</a>
+        <a href="#auctions" class="btn">Enter Auctions</a>
       </div>
-
     </div>
-  </div>
-</section>
+  </header>
 
-<section class="section" id="how">
-  <div class="container">
-    <h2>How It Works</h2>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Curated Digital Luxury</div>
+          <h1>Curated Luxury Auctions for Exceptional Pieces</h1>
+          <p>
+            Discover rare watches, designer objects, collectible pieces, and
+            high-value items in a premium online auction experience designed
+            for discerning bidders.
+          </p>
 
-    <div class="grid">
+          <div class="hero-actions">
+            <a href="#auctions" class="btn">View Featured Lots</a>
+            <a href="#consign" class="btn-ghost">Submit an Item</a>
+          </div>
 
-      <div class="card">
-        <div class="card-content">
-          <h3>1. Browse Auctions</h3>
-          <p class="muted">Explore exclusive items listed by sellers.</p>
+          <div class="hero-metrics">
+            <div class="metric">
+              <strong>1,850+</strong>
+              <span>Active luxury lots</span>
+            </div>
+            <div class="metric">
+              <strong>12,400+</strong>
+              <span>Registered collectors</span>
+            </div>
+            <div class="metric">
+              <strong>98%</strong>
+              <span>Successful closed sales</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="glow-orb glow-a"></div>
+          <div class="glow-orb glow-b"></div>
+
+          <div class="hero-card">
+            <img
+              src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=1400&q=80"
+              alt="Luxury featured auction item"
+            />
+            <div class="hero-overlay"></div>
+          </div>
+
+          <div class="floating-lot">
+            <span class="label">Featured Lot</span>
+            <h3>Patek Philippe Nautilus</h3>
+
+            <div class="floating-grid">
+              <div class="floating-stat">
+                <span>Current Bid</span>
+                <strong>$42,500</strong>
+              </div>
+              <div class="floating-stat">
+                <span>Bids</span>
+                <strong>27</strong>
+              </div>
+              <div class="floating-stat">
+                <span>Ends In</span>
+                <strong>03h 14m</strong>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="card">
-        <div class="card-content">
-          <h3>2. Place a Bid</h3>
-          <p class="muted">Compete with others in real time.</p>
+    <section class="section" id="auctions">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Featured Lots</div>
+            <h2>Current Highlights from the Auction Floor</h2>
+          </div>
+          <p>
+            Explore hand-selected lots across timepieces, photography,
+            collectible instruments, and interior design pieces curated
+            for a premium bidding audience.
+          </p>
+        </div>
+
+        <div class="lots-grid">
+          <article class="lot-card">
+            <div class="lot-media">
+              <img
+                src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1200&q=80"
+                alt="Luxury watch"
+              />
+              <span class="tag">Timepiece</span>
+              <span class="countdown">Ends in 2h 14m</span>
+            </div>
+            <div class="lot-content">
+              <h3>Rolex Submariner Date</h3>
+              <p>
+                A sought-after stainless steel diver's watch presented in
+                excellent condition with strong collector demand.
+              </p>
+
+              <div class="lot-meta">
+                <div class="meta-box">
+                  <span>Current Bid</span>
+                  <strong>$18,200</strong>
+                </div>
+                <div class="meta-box">
+                  <span>Total Bids</span>
+                  <strong>18</strong>
+                </div>
+              </div>
+
+              <div class="lot-actions">
+                <a href="#" class="btn">Place Bid</a>
+                <a href="#" class="btn-ghost">View Lot</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="lot-card">
+            <div class="lot-media">
+              <img
+                src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80"
+                alt="Vintage camera"
+              />
+              <span class="tag">Photography</span>
+              <span class="countdown">Ends in 5h 49m</span>
+            </div>
+            <div class="lot-content">
+              <h3>Leica M6 Collector Set</h3>
+              <p>
+                A refined collector’s camera package with heritage appeal,
+                mechanical precision, and timeless visual character.
+              </p>
+
+              <div class="lot-meta">
+                <div class="meta-box">
+                  <span>Current Bid</span>
+                  <strong>$7,450</strong>
+                </div>
+                <div class="meta-box">
+                  <span>Total Bids</span>
+                  <strong>11</strong>
+                </div>
+              </div>
+
+              <div class="lot-actions">
+                <a href="#" class="btn">Place Bid</a>
+                <a href="#" class="btn-ghost">View Lot</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="lot-card">
+            <div class="lot-media">
+              <img
+                src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=1200&q=80"
+                alt="Collector guitar"
+              />
+              <span class="tag">Collectible</span>
+              <span class="countdown">Ends in 1d 03h</span>
+            </div>
+            <div class="lot-content">
+              <h3>Vintage Gibson Les Paul</h3>
+              <p>
+                A distinguished collector-grade instrument combining rarity,
+                provenance, and iconic musical craftsmanship.
+              </p>
+
+              <div class="lot-meta">
+                <div class="meta-box">
+                  <span>Current Bid</span>
+                  <strong>$26,900</strong>
+                </div>
+                <div class="meta-box">
+                  <span>Total Bids</span>
+                  <strong>27</strong>
+                </div>
+              </div>
+
+              <div class="lot-actions">
+                <a href="#" class="btn">Place Bid</a>
+                <a href="#" class="btn-ghost">View Lot</a>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
+    </section>
 
-      <div class="card">
-        <div class="card-content">
-          <h3>3. Win & Pay</h3>
-          <p class="muted">Complete the purchase securely.</p>
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">The Auction Process</div>
+            <h2>A Refined Bidding Journey from Discovery to Ownership</h2>
+          </div>
+          <p>
+            Built for simplicity and trust, the experience is designed for
+            buyers and consignors who expect clarity, security, and elegance
+            at every step.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-card">
+            <div class="process-number">01</div>
+            <h3>Browse Curated Lots</h3>
+            <p>
+              Explore premium lots selected across luxury categories with
+              clear presentation, strong imagery, and essential bidding details.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">02</div>
+            <h3>Bid with Confidence</h3>
+            <p>
+              Place bids in a transparent live environment and monitor the
+              auction as competitive interest develops in real time.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">03</div>
+            <h3>Secure the Winning Lot</h3>
+            <p>
+              Once the auction closes, complete the purchase process through
+              a trusted and premium post-sale experience.
+            </p>
+          </div>
         </div>
       </div>
+    </section>
 
+    <section class="section" id="consign">
+      <div class="container consign-wrap">
+        <div class="consign-panel">
+          <div class="eyebrow">Consign with AuruxGold</div>
+          <h2>Present Exceptional Pieces to a Premium Global Audience</h2>
+          <p>
+            Submit watches, designer objects, collectible instruments, rare
+            photography equipment, and luxury assets to be showcased in a
+            refined digital auction environment built for serious buyers.
+          </p>
+
+          <div class="consign-actions">
+            <a href="#" class="btn">Submit an Item</a>
+            <a href="#auctions" class="btn-ghost">Explore Live Lots</a>
+          </div>
+        </div>
+
+        <div class="trust-panel">
+          <h3>Why Collectors Trust the Experience</h3>
+          <ul class="trust-list">
+            <li>Verified listings and structured lot presentation</li>
+            <li>Luxury-focused interface designed for premium conversions</li>
+            <li>Transparent bidding flow with clear live countdowns</li>
+            <li>Elegant presentation for both buyers and consignors</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <div>© 2026 AuruxGold. All rights reserved.</div>
+      <nav>
+        <a href="#auctions">Lots</a>
+        <a href="#process">Process</a>
+        <a href="#consign">Consign</a>
+      </nav>
     </div>
-  </div>
-</section>
-
-<section class="section" id="sell">
-  <div class="container">
-    <h2>Sell Your Items</h2>
-    <p style="text-align:center; color:#aaa;">
-      List your luxury items and reach premium buyers worldwide.
-    </p>
-  </div>
-</section>
-
-<footer>
-  <div class="container">
-    © 2026 AuruxGold. All rights reserved.
-  </div>
-</footer>
-
+  </footer>
 </body>
 </html>
